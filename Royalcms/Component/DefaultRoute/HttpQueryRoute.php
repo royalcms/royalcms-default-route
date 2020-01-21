@@ -32,11 +32,11 @@ class HttpQueryRoute
     public function __construct()
     {
         $this->request = royalcms('request');
-        
+
         $this->defaultRoute = config('route.'.SITE_HOST, config('route.default'));
 
         $this->match($this->request);
-        
+
     }
     
     /**
@@ -89,13 +89,13 @@ class HttpQueryRoute
          * path_info 路由支持
          * index.php/admin/index/init
          */
-        elseif (($route = ltrim($request->getPathInfo(), '/')) != false) {
-            list($module, $controller, $action) = explode('/', $route);
-            
-            $this->module = $module ?: $this->matchDefaultRoute($moduleName);
-            $this->controller = $controller ?: $this->matchDefaultRoute($controllerName);
-            $this->action = $action ?: $this->matchDefaultRoute($actionName);
-        }
+//        elseif (($route = ltrim($request->getPathInfo(), '/')) != false) {
+//            list($module, $controller, $action) = explode('/', $route);
+//
+//            $this->module = $module ?: $this->matchDefaultRoute($moduleName);
+//            $this->controller = $controller ?: $this->matchDefaultRoute($controllerName);
+//            $this->action = $action ?: $this->matchDefaultRoute($actionName);
+//        }
         /**
          * 默认route.php配置路由支持
          * index.php?m=admincp&c=index&a=init
