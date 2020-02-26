@@ -58,12 +58,12 @@ class HttpQueryRoute
          * @todo
          * Rewrite规则路由支持
          */
-        Rewrite::instance()->set_permalink_structure(true);
-        $rewrite = royalcms('rewrite');
-        $rewrite->add_query_vars(array_keys($_GET));
-        $rewrite->parse_request();
-        $params = $rewrite->get_query_var();
-        $request->merge($params);
+//        $rewrite = royalcms('rewrite');
+//        $rewrite->set_permalink_structure(true);
+//        $rewrite->add_query_vars(array_keys($_GET));
+//        $rewrite->parse_request();
+//        $params = $rewrite->get_query_var();
+//        $request->merge($params);
         
         /**
          * 参数路由兼容
