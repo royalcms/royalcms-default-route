@@ -3,6 +3,8 @@
 namespace Royalcms\Component\DefaultRoute\MatchRules;
 
 
+use Royalcms\Component\DefaultRoute\RouteMatchInterface;
+
 /**
  * Class QueryStringMatch
  * @package Royalcms\Component\DefaultRoute\MatchRules
@@ -26,11 +28,13 @@ class QueryStringMatch implements RouteMatchInterface
      */
     public function handle()
     {
-        if (($this->route->getRequest()->input($moduleName)) !== false) {
+        $moduleName     = config('route.module', 'm');
+        $controllerName = config('route.controller', 'c');
+        $actionName     = config('route.action', 'a');
 
-            $moduleName     = config('route.module', 'm');
-            $controllerName = config('route.controller', 'c');
-            $actionName     = config('route.action', 'a');
+        $request = $this->route->getRequest();
+
+        if (($request->input($moduleName))) {
 
             $module = $request->input($moduleName, $this->route->matchDefaultRoute($moduleName));
             $controller = $request->input($controllerName, $this->route->matchDefaultRoute($controllerName));

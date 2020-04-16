@@ -3,6 +3,8 @@
 namespace Royalcms\Component\DefaultRoute\MatchRules;
 
 
+use Royalcms\Component\DefaultRoute\RouteMatchInterface;
+
 /**
  * Class QueryRMatch
  * @package Royalcms\Component\DefaultRoute\MatchRules
@@ -26,18 +28,18 @@ class QueryRMatch implements RouteMatchInterface
      */
     public function handle()
     {
-        if (($route = $this->route->getRequest()->input($routeName)) !== false) {
+        $moduleName     = config('route.module', 'm');
+        $controllerName = config('route.controller', 'c');
+        $actionName     = config('route.action', 'a');
+        $routeName      = config('route.route', 'r');
 
-            $moduleName     = config('route.module', 'm');
-            $controllerName = config('route.controller', 'c');
-            $actionName     = config('route.action', 'a');
-            $routeName      = config('route.route', 'r');
+        if (($route = $this->route->getRequest()->input($routeName))) {
 
             list($module, $controller, $action) = explode('/', $route);
 
-            $module = $module ?: $this->matchDefaultRoute($moduleName);
-            $controller = $controller ?: $this->matchDefaultRoute($controllerName);
-            $action = $action ?: $this->matchDefaultRoute($actionName);
+            $module = $module ?: $this->route->matchDefaultRoute($moduleName);
+            $controller = $controller ?: $this->route->matchDefaultRoute($controllerName);
+            $action = $action ?: $this->route->matchDefaultRoute($actionName);
 
             $this->route->setModule($module);
             $this->route->setController($controller);

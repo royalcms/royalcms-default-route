@@ -3,6 +3,8 @@
 namespace Royalcms\Component\DefaultRoute\MatchRules;
 
 
+use Royalcms\Component\DefaultRoute\RouteMatchInterface;
+
 /**
  * Class PathInfoMatch
  * @package Royalcms\Component\DefaultRoute\MatchRules
