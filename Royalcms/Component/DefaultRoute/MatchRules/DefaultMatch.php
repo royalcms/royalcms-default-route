@@ -32,9 +32,13 @@ class DefaultMatch implements RouteMatchInterface
         $controllerName = config('route.controller', 'c');
         $actionName     = config('route.action', 'a');
 
-        $this->route->setModule($moduleName);
-        $this->route->setController($controllerName);
-        $this->route->setAction($actionName);
+        $module = $this->route->matchDefaultRoute($moduleName);
+        $controller = $this->route->matchDefaultRoute($controllerName);
+        $action = $this->route->matchDefaultRoute($actionName);
+
+        $this->route->setModule($module);
+        $this->route->setController($controller);
+        $this->route->setAction($action);
 
         return true;
     }
