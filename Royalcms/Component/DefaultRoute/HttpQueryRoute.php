@@ -68,6 +68,11 @@ class HttpQueryRoute
         $this->module = $this->ksesString($this->module);
         $this->controller = $this->ksesString($this->controller);
         $this->action = $this->ksesString($this->action);
+
+        // define ROUTE_M ROUTE_C ROUTE_A
+        define('ROUTE_M', $this->getModule());
+        define('ROUTE_C', $this->getController());
+        define('ROUTE_A', $this->getAction());
     }
 
     /**

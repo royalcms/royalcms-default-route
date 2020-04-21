@@ -19,11 +19,6 @@ class DefaultRouteServiceProvider extends ServiceProvider
     {
         $this->royalcms->singleton('default-router', function($royalcms) {
             $route = new HttpQueryRoute();
-
-            define('ROUTE_M', $route->getModule());
-            define('ROUTE_C', $route->getController());
-            define('ROUTE_A', $route->getAction());
-
             return $route;
         });
     }
